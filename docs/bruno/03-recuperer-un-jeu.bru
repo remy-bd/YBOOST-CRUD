@@ -1,0 +1,17 @@
+meta {
+  name: Récupérer un jeu
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseUrl}}/api/games/{{gameId}}
+  body: none
+  auth: none
+}
+
+tests {
+  test("Status 200", function () {
+    expect(res.getStatus()).to.equal(200);
+  });
+}

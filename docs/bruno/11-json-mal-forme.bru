@@ -1,0 +1,25 @@
+meta {
+  name: Envoyer un JSON mal formé
+  type: http
+  seq: 11
+}
+
+post {
+  url: {{baseUrl}}/api/games
+  body: text
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:text {
+  { "title": "JSON cassé",
+}
+
+tests {
+  test("Status 400", function () {
+    expect(res.getStatus()).to.equal(400);
+  });
+}

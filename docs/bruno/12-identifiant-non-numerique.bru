@@ -1,0 +1,17 @@
+meta {
+  name: Identifiant non numérique
+  type: http
+  seq: 12
+}
+
+get {
+  url: {{baseUrl}}/api/games/abc
+  body: none
+  auth: none
+}
+
+tests {
+  test("Status 400", function () {
+    expect(res.getStatus()).to.equal(400);
+  });
+}

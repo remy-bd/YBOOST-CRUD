@@ -1,0 +1,27 @@
+meta {
+  name: Ajouter un jeu note supérieure à 10
+  type: http
+  seq: 9
+}
+
+post {
+  url: {{baseUrl}}/api/games
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "title": "Test Note",
+    "editor": "Studio",
+    "releaseYear": 2022,
+    "genre": "RPG",
+    "rating": 11
+  }
+}
+
+tests {
+  test("Status 400", function () {
+    expect(res.getStatus()).to.equal(400);
+  });
+}

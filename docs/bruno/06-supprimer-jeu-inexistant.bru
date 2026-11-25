@@ -1,0 +1,17 @@
+meta {
+  name: Supprimer un jeu déjà supprimé
+  type: http
+  seq: 6
+}
+
+delete {
+  url: {{baseUrl}}/api/games/{{gameId}}
+  body: none
+  auth: none
+}
+
+tests {
+  test("Status 404", function () {
+    expect(res.getStatus()).to.equal(404);
+  });
+}

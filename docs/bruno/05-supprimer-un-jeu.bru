@@ -1,0 +1,17 @@
+meta {
+  name: Supprimer un jeu
+  type: http
+  seq: 5
+}
+
+delete {
+  url: {{baseUrl}}/api/games/{{gameId}}
+  body: none
+  auth: none
+}
+
+tests {
+  test("Status 204", function () {
+    expect(res.getStatus()).to.equal(204);
+  });
+}

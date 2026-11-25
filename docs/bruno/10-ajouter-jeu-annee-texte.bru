@@ -1,0 +1,27 @@
+meta {
+  name: Ajouter un jeu année en texte
+  type: http
+  seq: 10
+}
+
+post {
+  url: {{baseUrl}}/api/games
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "title": "Test Année",
+    "editor": "Studio",
+    "releaseYear": "2022",
+    "genre": "RPG",
+    "rating": 8.5
+  }
+}
+
+tests {
+  test("Status 400", function () {
+    expect(res.getStatus()).to.equal(400);
+  });
+}

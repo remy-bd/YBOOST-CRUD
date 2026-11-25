@@ -1,0 +1,21 @@
+meta {
+  name: Lister les jeux
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/api/games
+  body: none
+  auth: none
+}
+
+tests {
+  test("Status 200", function () {
+    expect(res.getStatus()).to.equal(200);
+  });
+
+  test("Retourne un tableau", function () {
+    expect(res.getBody()).to.be.an("array");
+  });
+}

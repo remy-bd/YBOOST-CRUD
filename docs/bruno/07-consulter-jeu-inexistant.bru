@@ -1,0 +1,17 @@
+meta {
+  name: Consulter un identifiant inexistant
+  type: http
+  seq: 7
+}
+
+get {
+  url: {{baseUrl}}/api/games/999999
+  body: none
+  auth: none
+}
+
+tests {
+  test("Status 404", function () {
+    expect(res.getStatus()).to.equal(404);
+  });
+}

@@ -1,0 +1,37 @@
+meta {
+  name: Ajouter un jeu
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/api/games
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "title": "Outer Wilds",
+    "editor": "Annapurna Interactive",
+    "releaseYear": 2019,
+    "genre": "Exploration",
+    "rating": 9.4
+  }
+}
+
+script:post-response {
+  if (res.getStatus() === 201 && res.getBody()?.id) {
+    bru.setVar("gameId", res.getBody().id);
+  }
+}
+
+tests {
+  test("Status 201", function () {
+    expect(res.getStatus()).to.equal(201);
+  });
+
+  test("Contient un id", function () {
+    expect(res.getBody().id).to.be.a("number");
+  });
+}

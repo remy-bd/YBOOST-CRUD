@@ -1,0 +1,27 @@
+meta {
+  name: Ajouter un jeu sans titre
+  type: http
+  seq: 8
+}
+
+post {
+  url: {{baseUrl}}/api/games
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "title": "",
+    "editor": "Bandai Namco",
+    "releaseYear": 2022,
+    "genre": "Action-RPG",
+    "rating": 9.5
+  }
+}
+
+tests {
+  test("Status 400", function () {
+    expect(res.getStatus()).to.equal(400);
+  });
+}
